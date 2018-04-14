@@ -4,12 +4,10 @@
   "description": "MyTeepi API client",
   "main": "dist",
   "types": "src/myteepi.d.ts",
-  "files": [
-    "src",
-    "dist"
-  ],
+  "files": ["src", "dist"],
   "scripts": {
     "build": "babel src -d dist -s",
+    "prepublish": "npm run build",
     "lint": "eslint ."
   },
   "repository": "dramloc/myteepi",
@@ -33,11 +31,7 @@
     "eslint-plugin-import": "^2.10.0"
   },
   "eslintConfig": {
-    "extends": [
-      "airbnb-base"
-    ]
+    "extends": ["airbnb-base"]
   },
-  "eslintIgnore": [
-    "dist"
-  ]
+  "eslintIgnore": ["dist"]
 }
