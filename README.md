@@ -6,13 +6,10 @@ MyTeepi API client. See MyTeepi product [here](https://www.myteepi.fr/).
 
 Add `myteepi` to your dependencies:
 
-```shell
+```bash
+# using npm
 npm i myteepi
-```
-
-or using yarn:
-
-```shell
+# using yarn
 yarn add myteepi
 ```
 
@@ -22,6 +19,9 @@ Use it in your project:
 import MyTeepi from "myteepi";
 
 const api = new MyTeepi("my-teepi-username", "my-teepi-password");
-
 api.getDevices();
 ```
+
+## License
+
+[MIT](https://oss.ninja/mit/dramloc)
