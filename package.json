@@ -1,0 +1,36 @@
+{
+  "name": "myteepi",
+  "version": "1.0.0",
+  "description": "MyTeepi API client",
+  "main": "dist",
+  "types": "src/myteepi.d.ts",
+  "files": ["src", "dist"],
+  "scripts": {
+    "build": "babel src -d dist -s",
+    "lint": "eslint ."
+  },
+  "author": "Antoine Colmard <a.colmard@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "flatten": "^1.0.2",
+    "request": "^2.85.0",
+    "winston": "^2.4.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.44",
+    "@babel/core": "^7.0.0-beta.44",
+    "@babel/node": "^7.0.0-beta.44",
+    "@babel/preset-env": "^7.0.0-beta.44",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.10.0"
+  },
+  "eslintConfig": {
+    "extends": ["airbnb-base"]
+  },
+  "eslintIgnore": ["dist"]
+}
