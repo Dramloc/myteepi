@@ -1,6 +1,7 @@
 # myteepi
 
-MyTeepi API client. See MyTeepi product [here](https://www.myteepi.fr/).
+Isomorphic MyTeepi API client -- works in browser and node.
+See MyTeepi product [here](https://www.myteepi.fr/).
 
 ## Usage
 
@@ -19,7 +20,7 @@ Use it in your project:
 import MyTeepi from "myteepi";
 
 const api = new MyTeepi("my-teepi-username", "my-teepi-password");
-api.getDevices();
+api.getDevices().then(console.log);
 ```
 
 ## License

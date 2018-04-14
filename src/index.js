@@ -1,5 +1,6 @@
-import axios from 'axios';
+import fetch from 'isomorphic-fetch';
 import flatten from 'flatten';
+import qs from 'qs';
 
 import Auth from './auth';
 
@@ -10,11 +11,10 @@ export default class MyTeepi {
 
   async get(url, params = {}) {
     const { access_token: accessToken, token_type: tokenType } = await this.auth.getAuthorization();
-    const { data } = await axios.get(url, {
-      params,
+    const response = await fetch(`${url}${qs.stringify(params, { addQueryPrefix: true })}`, {
       headers: { Authorization: `${tokenType} ${accessToken}` },
     });
-    return data;
+    return response.json();
   }
 
   async getDevices() {

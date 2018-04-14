@@ -1,7 +1,5 @@
-import { promisify } from 'util';
-import request from 'request';
-
-const http = promisify(request);
+import fetch from 'isomorphic-fetch';
+import FormData from 'form-data';
 
 export default class Auth {
   constructor(username, password) {
@@ -12,20 +10,18 @@ export default class Auth {
   }
 
   async authorize() {
-    const response = await http({
+    const form = new FormData();
+    form.append('grant_type', 'password');
+    form.append('username', this.username);
+    form.append('password', this.password);
+    const response = await fetch('https://api.ingeniousthings.fr/accounts/oauth/token', {
       method: 'POST',
-      url: 'https://api.ingeniousthings.fr/accounts/oauth/token',
       headers: {
         Authorization: 'Basic d2ViX2FwcDo=',
-        'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW',
       },
-      formData: {
-        grant_type: 'password',
-        username: this.username,
-        password: this.password,
-      },
+      body: form,
     });
-    const authorization = JSON.parse(response.body);
+    const authorization = await response.json();
     this.authorization = authorization;
     const expiresIn = authorization.expires_in * 1000;
     this.expiresAt = Date.now() + expiresIn;
